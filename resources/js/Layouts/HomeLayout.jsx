@@ -63,7 +63,7 @@ export default function HomeLayout({ children }) {
                         Report
                     </Link>
                 </div>
-                <div className="border-t   flex flex-col items-center py-2 px-3 text-white w-full bg-secondary ">
+                <div className="border-t   flex flex-col items-center py-2 px-3 text-primary w-full   ">
                     <HiLogout size={32} />
                 </div>
             </div>
