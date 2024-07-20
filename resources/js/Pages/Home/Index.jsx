@@ -53,7 +53,7 @@ export default function Index() {
         <>
             <Head title="Aplikasi Point Of Sale" />
             <HomeLayout>
-                <div className="p-4 ml-32 min-h-screen ">
+                <div className="p-4 ml-32   ">
                     <div className="flex justify-between items-center mb-4">
                         <input
                             type="text"
@@ -74,86 +74,104 @@ export default function Index() {
                             </button>
                         ))}
                     </div>
-                    <div className="flex gap-5  ">
-                        <div className="flex-1 grid grid-cols-4 gap-4 max-h-[1000px]   overflow-scroll product-grid pb-10 ">
+                    <div className="flex gap-5 justify-between  flex-grow   ">
+                        <div className="flex-1 grid grid-cols-4 gap-4 max-h-[1000px]   overflow-scroll product-grid pb-10 h-fit ">
                             {products.map((product) => (
                                 <div
                                     onClick={() => addToCart(product)}
                                     key={product.id}
-                                    className="  rounded-md p-4 flex flex-col items-center bg-white shadow-xl h-44 cursor-pointer hover:scale-110 transition-all duration-300 "
+                                    className="  rounded-md   flex flex-col items-center bg-white shadow-xl h-44 cursor-pointer hover:scale-110 transition-all duration-300 "
                                 >
-                                    <img
-                                        src={product.image}
-                                        alt={product.name}
-                                        className="w-20 h-20 bg-gray-300 rounded-full mb-2"
-                                    />
-                                    <h3 className="font-bold text-gray-800">
-                                        {product.name}
-                                    </h3>
-                                    <p className="text-gray-600">
-                                        Rp.{product.price}
-                                    </p>
+                                    <div className="p-2  border-b">
+                                        <img
+                                            src={`${asset}logo/logo.png`}
+                                            alt={product.name}
+                                            className="w-20 h-20  bg-gray-300 rounded-full mb-2"
+                                        />
+                                    </div>
+                                    <div className="  w-full flex flex-col justify-between items-center h-full pb-2">
+                                        <h3 className="text-center font-bold text-xs text-gray-800">
+                                            {product.name}
+                                        </h3>
+                                        <p className="text-primary text-xs font-bold border-b border-primary">
+                                            Rp.{product.price}
+                                        </p>
+                                    </div>
                                 </div>
                             ))}
                         </div>
-                        <div className="w-1/3 border-l p-4 bg-white flex flex-col justify-between h-full">
-                            <ul className="flex flex-col gap-2 mb-4">
+                        <div className="w-1/3 border-l p-4 bg-white flex flex-col justify-between   ">
+                            <ul className="flex flex-col gap-2 mb-4 max-h-[550px] overflow-scroll product-grid">
                                 {cartItems.map((item) => (
                                     <li
                                         key={item.id}
                                         className="flex justify-between items-center border p-2 rounded-md bg-white shadow-sm"
                                     >
-                                        <span>{item.name}</span>
-                                        <span>Rp.{item.price}</span>
-                                        <div className="flex items-center">
-                                            <button
-                                                className="bg-secondary text-white px-2 py-1 rounded-md"
-                                                onClick={() =>
-                                                    decreaseQuantity(item.id)
-                                                }
-                                            >
-                                                -
-                                            </button>
-                                            <span className="mx-2">
-                                                {item.quantity}
+                                        <div className="">
+                                            <p className="text-xs">
+                                                {item.name}
+                                            </p>
+                                            <span className="text-xs font-bold text-primary">
+                                                Rp.{item.price}
                                             </span>
+                                        </div>
+                                        <div className="flex items-center gap-2">
+                                            <div className="flex items-center">
+                                                <button
+                                                    className="bg-secondary text-white px-1 py-0.5 rounded-md"
+                                                    onClick={() =>
+                                                        decreaseQuantity(
+                                                            item.id
+                                                        )
+                                                    }
+                                                >
+                                                    -
+                                                </button>
+                                                <span className="mx-2 text-xs">
+                                                    {item.quantity}
+                                                </span>
+                                                <button
+                                                    className="bg-secondary text-white px-1 py-0.5 rounded-md"
+                                                    onClick={() =>
+                                                        increaseQuantity(
+                                                            item.id
+                                                        )
+                                                    }
+                                                >
+                                                    +
+                                                </button>
+                                            </div>
                                             <button
-                                                className="bg-secondary text-white px-2 py-1 rounded-md"
+                                                className="text-primary"
                                                 onClick={() =>
-                                                    increaseQuantity(item.id)
+                                                    removeFromCart(item.id)
                                                 }
                                             >
-                                                +
+                                                ×
                                             </button>
                                         </div>
-                                        <button
-                                            className="text-primary"
-                                            onClick={() =>
-                                                removeFromCart(item.id)
-                                            }
-                                        >
-                                            ×
-                                        </button>
                                     </li>
                                 ))}
                             </ul>
-                            <div className="border-t pt-2">
-                                <div className="flex justify-between">
-                                    <span>Subtotal</span>
-                                    <span>Rp.xxx</span>
+                            <div className="">
+                                <div className="border-t pt-2">
+                                    <div className="flex justify-between text-sm">
+                                        <span>Subtotal</span>
+                                        <span>Rp.xxx</span>
+                                    </div>
+                                    <div className="flex justify-between font-bold text-lg mt-2">
+                                        <span>Total</span>
+                                        <span>Rp.xxx</span>
+                                    </div>
                                 </div>
-                                <div className="flex justify-between font-bold text-lg mt-2">
-                                    <span>Total</span>
-                                    <span>Rp.xxx</span>
+                                <div className="flex justify-between mt-4 text-sm">
+                                    <button className="bg-primary text-white rounded-md px-4 py-2 ">
+                                        Simpan
+                                    </button>
+                                    <button className="bg-green-500 text-white rounded-md px-4 py-2">
+                                        CheckOut
+                                    </button>
                                 </div>
-                            </div>
-                            <div className="flex justify-between mt-4">
-                                <button className="bg-primary text-white rounded-md px-4 py-2">
-                                    Simpan
-                                </button>
-                                <button className="bg-green-500 text-white rounded-md px-4 py-2">
-                                    CheckOut
-                                </button>
                             </div>
                         </div>
                     </div>
