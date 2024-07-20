@@ -7,20 +7,22 @@ import { HiLogout } from "react-icons/hi";
 import { MdOutlineSettings } from "react-icons/md";
 export default function HomeLayout({ children }) {
     return (
-        <div className="h-screen w-full bg-background">
+        <div className="  w-full bg-background">
             <header className="sticky top-0 bg-white z-50">
-                <nav className="flex justify-between items-center h-[50px] shadow-xl px-5">
+                <nav className="flex justify-between items-center h-[60px] shadow-xl px-5">
                     <div className="">
-                        <h1 className="text-xl font-bold uppercase text-primary">
-                            Davin BabyShop
-                        </h1>
+                        <img
+                            src={`${asset}logo/logo.png`}
+                            alt="davinbabyshop"
+                            className="w-44"
+                        />
                     </div>
                     <div className="">
                         <FaUserCircle size={24} />
                     </div>
                 </nav>
             </header>
-            <div className="w-32 border h-screen fixed left-0 top-0 bg-white flex flex-col justify-between pt-16 items-center">
+            <div className="w-32 border h-screen fixed left-0 top-0 bg-white flex flex-col justify-between pt-20 items-center">
                 <ul className="flex flex-col gap-5">
                     <li className="border border-primary bg-primary bg-opacity-10 rounded-md flex flex-col items-center py-2 px-3 text-textPrimary">
                         <MdHomeMax size={32} />
@@ -43,7 +45,7 @@ export default function HomeLayout({ children }) {
                     <HiLogout size={32} />
                 </div>
             </div>
-            <main className="h-screen">{children}</main>
+            <main className=" ">{children}</main>
         </div>
     );
 }

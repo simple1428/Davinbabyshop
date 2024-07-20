@@ -18,5 +18,8 @@
     </head>
     <body class="font-sans antialiased">
         @inertia
+        <script>
+            window.asset = '{{ asset('') }}';
+        </script>
     </body>
 </html>
